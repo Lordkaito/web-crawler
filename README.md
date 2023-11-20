@@ -16,7 +16,7 @@ You will need node and npm installed on your computer. You can download them fro
 ## This application is only intended to be used for Y Combinator news page, if you want to use it for another page, you will need to modify the code.
 
 There is two ways to use this app:
-A. You can manually run the code, adding some console.logs into the `index` function in the index.js file to see the outputs and then run `node index.js`. By default, by running `node index.js` you will see all the articles (rows) from the destination url (https://news.ycombinator.com/) in the console.
+A. You can manually run the code, adding some console.logs into the `index` function in the index.js file to see the outputs and then run `node index.js`. If you want to use this option, please make sure to add `console.log(rows)` at the end of the index function inside the scrap.js file, right before the return statement. This will allow you to see the output of the function in the console.
 B. Or you can run `node cli.js` to execute the app in your terminal and be able to interact with it by using simple inputs and see the results in the console.
 
 ## Regardless of the option you chose, here is a detail of what you can find:
@@ -36,7 +36,7 @@ Inside `scrap.js` file:
 ***Note:*** If you check the structure, you will notice that there is 3 main files: index.js, cli.js and scrap.js.
 All the logic related to the scrapping is inside scrap.js.
 Everything related to the cli is inside cli.js.
-And index.js is only used to be the entry point of the application when you run `node index.js` BUT not when you run `node cli.js`.
+And index.js is only used to be the entry point of the application for you to be able to run `node index.js`
 
 # **Testing**
 
