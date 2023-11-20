@@ -11,22 +11,17 @@ async function index() {
   await page.goto(URL, {
     waitUntil: "domcontentloaded",
   });
-  const rows = await getRows(page);
-  const points = await getPoints(page);
-  const comments = await getComments(page);
+  const rows = await getDataFromRows(page);
 
   console.log(
-    rows,
-    points,
-    comments,
     rows.map((row) => {
-      return row.rank;
+      return row;
     })
   );
   return rows;
 }
 
-async function getRows(page) {
+async function getDataFromRows(page) {
   return await page.evaluate(() => {
     const rows = document.querySelectorAll("tr.athing");
 
@@ -34,31 +29,20 @@ async function getRows(page) {
       const rank = row.querySelector("td span.rank").innerText;
       const title = row.querySelector("td.title span.titleline").innerText;
       const id = row.getAttribute("id");
+      const points = document
+        .querySelector(`#score_${id}`)
+        .innerText.split(" ")[0];
+      const comment = document
+        .querySelector(`#score_${id}`)
+        .parentElement.lastElementChild.innerText.replace(/\u00a0/g, " ");
+      const parsedComment = comment.split(" ")[0];
       return {
+        id,
         rank,
         title,
-        id,
+        points,
+        comments: parsedComment,
       };
-    });
-  });
-}
-
-async function getPoints(page) {
-  return await page.evaluate(() => {
-    const points = document.querySelectorAll("td.subtext span.score");
-
-    return Array.from(points).map((point) => {
-      return point.innerText;
-    });
-  });
-}
-
-async function getComments(page) {
-  return await page.evaluate(() => {
-    const comments = document.querySelectorAll("td.subtext a:last-child");
-
-    return Array.from(comments).map((comment) => {
-      return comment.innerText;
     });
   });
 }
