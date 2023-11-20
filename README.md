@@ -11,12 +11,13 @@ You will need node and npm installed on your computer. You can download them fro
 
 # **Usage**
 
-**You can use the app in two ways:**
 
 ## This application is only intended to be used for Y Combinator news page, if you want to use it for another page, you will need to modify the code.
 
-There is two ways to use this app:
+**You can use the app in two ways:**
+
 A. You can manually run the code, adding some console.logs into the `index` function in the index.js file to see the outputs and then run `node index.js`. If you want to use this option, please make sure to add `console.log(rows)` at the end of the index function inside the scrap.js file, right before the return statement. This will allow you to see the output of the function in the console.
+
 B. Or you can run `node cli.js` to execute the app in your terminal and be able to interact with it by using simple inputs and see the results in the console.
 
 ## Regardless of the option you chose, here is a detail of what you can find:
