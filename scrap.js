@@ -13,7 +13,6 @@ async function index(url) {
   });
   const rows = await getDataFromRows(page);
   console.log(rows);
-
   await browser.close();
   return rows;
 }
@@ -28,19 +27,20 @@ async function getDataFromRows(page) {
       const cleanTitle = title.replace(/ \([^)]*\)$/, "");
       const id = row.getAttribute("id");
       const pointsElement = document.querySelector("#score_" + `${id}`);
-      let comment, parsedComment;
+      let comment = document
+        .querySelector(`#score_${id}`)?.parentElement.lastElementChild.innerText.replace(/\u00a0/g, " ");
+      if (!comment) {
+        parsedComment = Number(0);
+      } else {
+        parsedComment = Number(comment.split(" ")[0]);
+      }
       let points;
       if (!pointsElement) {
-        comment = 0;
         points = 0;
       } else {
         points = Number(
           document.querySelector("#score_" + `${id}`).innerText.split(" ")[0]
         );
-        comment = document
-          .querySelector(`#score_${id}`)
-          .parentElement.lastElementChild.innerText.replace(/\u00a0/g, " ");
-        parsedComment = Number(comment.split(" ")[0])
       }
       if (parsedComment === "discuss") parsedComment = Number(0);
       return {
@@ -97,8 +97,12 @@ function sortByPoints(rows) {
 }
 
 export {
+  getArticlesWithLessOrEqualsToFiveWords,
+  getArticlesWithMoreThanFiveWords,
   orderByCommentsWithMoreThanFiveWords,
   orderByPointsWithLessThanFiveWords,
+  sortByComments,
+  sortByPoints,
   index,
   getDataFromRows,
 };
