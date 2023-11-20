@@ -3,7 +3,7 @@ import {
   orderByPointsWithLessThanFiveWords,
   index,
   getDataFromRows,
-} from "./index.js";
+} from "./scrap.js";
 import puppeteer from "puppeteer";
 import readline from "readline";
 
