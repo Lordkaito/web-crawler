@@ -12,7 +12,6 @@ async function index(url) {
     waitUntil: "domcontentloaded",
   });
   const rows = await getDataFromRows(page);
-  console.log(rows);
   await browser.close();
   return rows;
 }
