@@ -12,12 +12,24 @@ import readline from "readline";
 
 const URL = "https://news.ycombinator.com/";
 
+/* The code `const rl = readline.createInterface({ input: process.stdin, output: process.stdout });`
+creates an interface for reading input from the user and writing output to the console. It sets up a
+readline interface that listens for input from the standard input stream (`process.stdin`) and
+writes output to the standard output stream (`process.stdout`). This allows the program to prompt
+the user for input and display messages to the console. */
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
+/* The line `console.log("Welcome to the Hacker News Scraper!");` is printing the message "Welcome to
+the Hacker News Scraper!" to the console. It is a welcome message displayed to the user when the
+program starts. */
 console.log("Welcome to the Hacker News Scraper!");
+
+/**
+ * The function `showOptions()` displays a menu of options for the user to choose from.
+ */
 function showOptions() {
   console.log("Options:");
   console.log("1. Get all items");
@@ -36,6 +48,11 @@ function showOptions() {
   console.log("8. Quit");
 }
 
+/**
+ * The function `askQuestion` prompts the user to select an option, launches a headless browser,
+ * retrieves data from a webpage, performs different operations based on the selected option, and
+ * repeats the process until the user chooses to exit.
+ */
 function askQuestion() {
   rl.question("Select an option: ", async (option) => {
     const browser = await puppeteer.launch({
