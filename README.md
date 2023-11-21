@@ -16,7 +16,7 @@ You will need node and npm installed on your computer. You can download them fro
 
 **You can use the app in two ways:**
 
-A. You can manually run the code, adding some console.logs into the `index` function in the index.js file to see the outputs and then run `node index.js`. If you want to use this option, please make sure to add `console.log(rows)` at the end of the index function inside the scrap.js file, right before the return statement. This will allow you to see the output of the function in the console.
+A. You can manually run the code, adding some console.logs into the `index` function in the index.js file to see the outputs and then run `node index.js`. By default, when you run `node index.js` you will see an array containing the information from the articles in the ycombinator page, not ordered, not filtered, just raw data.
 
 B. Or you can run `node cli.js` to execute the app in your terminal and be able to interact with it by using simple inputs and see the results in the console.
 
